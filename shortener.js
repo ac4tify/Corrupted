@@ -1,17 +1,21 @@
 const params = new URLSearchParams(window.location.search);
 const service = params.get("service");
 
+const serviceName = document.getElementById("serviceName");
 const input = document.getElementById("userLink");
 const typeSelect = document.getElementById("linkType");
 const resultDiv = document.getElementById("result");
-const btn = document.getElementById("generateBtn");
+const generateBtn = document.getElementById("generateBtn");
 const copyBtn = document.getElementById("copyBtn");
 const viewBtn = document.getElementById("viewBtn");
 
-btn.addEventListener("click", async () => {
+// Setăm titlul serviciului
+serviceName.innerHTML = service.toUpperCase() + " selected";
+
+generateBtn.addEventListener("click", async () => {
   const link = input.value.trim();
   const type = typeSelect.value;
-  if(!link) return alert("Please paste a link!");
+  if (!link) return alert("Please paste a link!");
 
   let shortLink = "";
 
@@ -23,7 +27,7 @@ btn.addEventListener("click", async () => {
       const res = await fetch(`https://v.gd/create.php?format=simple&url=${encodeURIComponent(link)}`);
       shortLink = await res.text();
     } else if(service === "tinyurl") {
-      const res = await fetch(`https://click.ru/--?url=${encodeURIComponent(link)}`);
+      const res = await fetch(`https://clck.ru/--?url=${encodeURIComponent(link)}`); // click.ru recomandat
       shortLink = await res.text();
     } else if(service === "dagd") {
       const res = await fetch(`https://da.gd/s?url=${encodeURIComponent(link)}`);
@@ -42,23 +46,26 @@ btn.addEventListener("click", async () => {
 
     if(!shortLink) throw new Error("Shortening failed");
 
-    // Creează linkul final după tip
+    // Creează linkul final în funcție de tip
     let finalLink = "";
     if(type === "profile") {
-      finalLink = `[${link}](${shortLink})`;
+      finalLink = `[https*:*//www.roblox.com/users/3095250/profile](${shortLink})`;
     } else if(type === "group") {
-      finalLink = `[${link}](${shortLink})`;
+      finalLink = `[www.roblox.com/groups/2194003353](${shortLink})`;
     } else if(type === "private") {
-      finalLink = `[${link}](${shortLink})`;
+      finalLink = `[https_:_//www.roblox.com/share?code=80177c63cdc8614aa84be3cbd84b051a&type=Server](${shortLink})`;
     }
 
     resultDiv.innerText = finalLink;
-
-    copyBtn.onclick = () => navigator.clipboard.writeText(finalLink);
-    viewBtn.onclick = () => window.open(shortLink, "_blank");
+    copyBtn.disabled = false;
+    viewBtn.href = shortLink;
 
   } catch(err) {
     console.error(err);
     alert("Error shortening link. Try another shortener!");
   }
 });
+
+// Copy link (Markdown complet)
+copyBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(resultDiv.innerText
