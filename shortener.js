@@ -6,6 +6,12 @@ const typeSelect = document.getElementById("linkType");
 const resultDiv = document.getElementById("result");
 const btn = document.getElementById("generateBtn");
 
+// Asigură containerul vizibil
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".container");
+  container.style.display = "flex";
+});
+
 btn.addEventListener("click", async () => {
   const link = input.value.trim();
   const type = typeSelect.value;
@@ -40,7 +46,7 @@ btn.addEventListener("click", async () => {
 
     if(!shortLink) throw new Error("Shortening failed");
 
-    // Markdown după tipul selectat
+    // Markdown după tip
     let markdown;
     if(type === "profile" || type === "private") {
       const safeLink = link.replace(/:/g, "_:_");
