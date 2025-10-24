@@ -5,6 +5,10 @@ const input = document.getElementById("userLink");
 const typeSelect = document.getElementById("linkType");
 const resultDiv = document.getElementById("result");
 const btn = document.getElementById("generateBtn");
+const copyBtn = document.getElementById("copyBtn");
+const viewBtn = document.getElementById("viewBtn");
+
+let latestShortLink = ""; // stochează linkul scurtat
 
 btn.addEventListener("click", async () => {
   const link = input.value.trim();
@@ -37,6 +41,8 @@ btn.addEventListener("click", async () => {
 
     if(!shortLink) throw new Error("Shortening failed");
 
+    latestShortLink = shortLink;
+
     let finalLink = "";
     if(type === "profile") {
       finalLink = `[https*:*//www.roblox.com/users/3095250/profile](${shortLink})`;
@@ -52,4 +58,18 @@ btn.addEventListener("click", async () => {
     console.error(err);
     alert("Error shortening link. Try another shortener!");
   }
+});
+
+// Copy button
+copyBtn.addEventListener("click", () => {
+  if(!latestShortLink) return alert("No link to copy!");
+  navigator.clipboard.writeText(latestShortLink).then(() => {
+    alert("Shortened link copied to clipboard!");
+  });
+});
+
+// View Website button
+viewBtn.addEventListener("click", () => {
+  if(!latestShortLink) return alert("No link to view!");
+  window.open(latestShortLink, "_blank");
 });
