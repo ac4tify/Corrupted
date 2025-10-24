@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corrupt • Shortener</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing: border-box; font-family: 'Share Tech Mono', monospace; }
+body {
+  height: 100vh;
+  background: url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+h1 { font-size: 4rem; animation: glitch 1s infinite; margin-bottom: 40px; }
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red; }
+  20% { text-shadow: -2px -2px #fff; }
+  40% { text-shadow: 2px 2px red; }
+  60% { text-shadow: -2px 0 #fff; }
+  80% { text-shadow: 0 2px red; }
+  100% { text-shadow: 0 0 #fff; }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+input, select, button {
+  padding: 10px 15px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1rem;
+  backdrop-filter: blur(4px);
+  text-align: center;
+}
+button {
+  font-size: 1.2rem;
+  cursor: pointer;
+  animation: glitchBtn 2s infinite;
+}
+@keyframes glitchBtn {
+  0% { text-shadow: 2px 0 red; }
+  25% { text-shadow: -2px 2px #fff; }
+  50% { text-shadow: 2px -2px red; }
+  75% { text-shadow: -2px -2px #fff; }
+  100% { text-shadow: 0 0 #fff; }
+}
+#result { margin-top:20px; color:#fff; text-align:center; word-wrap:break-word; width:90%; }
+</style>
+</head>
+<body>
+<h1>Corrupt</h1>
+<div class="container">
+  <input type="text" id="userLink" placeholder="Paste your link here">
+  <select id="linkType">
+    <option value="profile">Profile</option>
+    <option value="group">Group</option>
+    <option value="private">Private Server</option>
+  </select>
+  <button id="generateBtn">Generate</button>
+  <div id="result"></div>
+</div>
 
+<script src="shortener.js"></script>
+</body>
+</html>
