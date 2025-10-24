@@ -3,37 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CorruptedV1 • Shortener</title>
+<title>Corrupt • Shortener</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing: border-box; font-family: 'Share Tech Mono', monospace; }
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Share Tech Mono', monospace; }
 body {
-  min-height: 100vh;
-  background: url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
-  display: flex; flex-direction: column; align-items: center; color: white; text-align: center;
+  min-height:100vh; background:url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
+  display:flex; flex-direction:column; align-items:center; color:white; text-align:center;
 }
-h1 { font-size: 4rem; margin-top: 40px; animation: glitch 1s infinite; }
-@keyframes glitch { 0%{text-shadow:2px 0 red}20%{text-shadow:-2px -2px #fff}40%{text-shadow:2px 2px red}60%{text-shadow:-2px 0 #fff}80%{text-shadow:0 2px red}100%{text-shadow:0 0 #fff} }
-.description { margin:15px 0 20px 0; font-size:1rem; }
+h1 { font-size:4rem; margin-top:40px; animation:glitch 1s infinite; }
+@keyframes glitch { 0%{text-shadow:2px 0 red} 20%{text-shadow:-2px -2px #fff} 40%{text-shadow:2px 2px red} 60%{text-shadow:-2px 0 #fff} 80%{text-shadow:0 2px red} 100%{text-shadow:0 0 #fff} }
+.description { margin:15px 0 40px 0; font-size:1rem; color:white; }
 .container {
-  background: rgba(0,0,0,0.3); border: 2px solid #fff; border-radius: 15px;
-  padding: 30px; display:flex; flex-direction: column; align-items:center; gap:15px; width: 350px; margin:0 auto;
+  background: rgba(0,0,0,0.3); border:2px solid #fff; border-radius:15px;
+  padding:30px; display:flex; flex-direction:column; align-items:center; gap:15px; width:320px; margin:0 auto;
 }
-input, select { width:100%; padding:10px 15px; border:2px solid #fff; border-radius:10px; background: rgba(255,255,255,0.2); color:#fff; font-size:1rem; text-align:center; }
-button { width:100%; padding:12px; font-size:1.3rem; font-weight:bold; border:2px solid #fff; border-radius:10px; background: rgba(255,255,255,0.1); color:#fff; cursor:pointer; animation: glitchBtn 2s infinite; }
-@keyframes glitchBtn { 0%{text-shadow:2px 0 red}25%{text-shadow:-2px 2px #fff}50%{text-shadow:2px -2px red}75%{text-shadow:-2px -2px #fff}100%{text-shadow:0 0 #fff} }
-.result-box { margin-top:15px; font-size:1rem; color:#fff; word-wrap:break-word; text-align:center; border:2px solid #fff; border-radius:10px; background:rgba(255,255,255,0.1); padding:10px; }
-.action-buttons { display:flex; gap:10px; margin-top:10px; justify-content:center; flex-wrap:wrap; }
-.action-buttons button, .action-buttons a { flex:1 1 45%; text-decoration:none; display:inline-block; }
-.discord-btn { margin-top:20px; padding:12px 25px; border:2px solid #fff; border-radius:10px; background:rgba(255,255,255,0.2); color:#fff; font-size:1.2rem; text-decoration:none; animation:glitchBtn 2s infinite; }
-.banner { margin-top:20px; width:300px; }
-.shortener-btn { margin:5px 0; padding:12px; width:100%; border:2px solid #fff; border-radius:10px; background: rgba(255,255,255,0.1); font-size:1.2rem; font-weight:bold; cursor:pointer; }
-.recommanded { color:red; font-size:0.9rem; display:block; margin-top:2px; }
+input, select, button { width:100%; padding:10px 15px; border:2px solid #fff; border-radius:10px; background: rgba(255,255,255,0.2); color:white; font-size:1rem; text-align:center; }
+button { font-size:1.2rem; cursor:pointer; }
+#result { margin-top:15px; font-size:1rem; color:white; word-wrap:break-word; text-align:center; border:2px solid #fff; border-radius:10px; background:rgba(255,255,255,0.1); padding:10px; }
+.discord-btn { margin-top:20px; padding:12px 25px; border:2px solid #fff; border-radius:10px; background:rgba(255,255,255,0.2); color:white; font-size:1.2rem; text-decoration:none; }
+.banner { margin-top:20px; }
 </style>
 </head>
 <body>
 
-<h1>CorruptedV1</h1>
+<h1>Corrupt</h1>
 <div class="description">Paste your link, select type, and press Generate.<br>If error occurs, try another shortener.</div>
 
 <div class="container">
@@ -43,20 +37,8 @@ button { width:100%; padding:12px; font-size:1.3rem; font-weight:bold; border:2p
     <option value="group">Group</option>
     <option value="private">Private Server</option>
   </select>
-  <div class="shortener-buttons">
-    <button class="shortener-btn" data-service="clickru">Click.ru <span class="recommanded">Recommended</span></button>
-    <button class="shortener-btn" data-service="isgd">Is.gd</button>
-    <button class="shortener-btn" data-service="vgd">v.gd</button>
-    <button class="shortener-btn" data-service="tinyurl">TinyURL</button>
-    <button class="shortener-btn" data-service="dagd">Da.gd</button>
-    <button class="shortener-btn" data-service="shrtco">shrtco.de</button>
-  </div>
   <button id="generateBtn">Generate</button>
-  <div class="result-box" id="result">Your shortened link will appear here</div>
-  <div class="action-buttons">
-    <button id="copyBtn">Copy</button>
-    <a id="viewBtn" href="#" target="_blank">View Website</a>
-  </div>
+  <div id="result">Your shortened link will appear here</div>
 </div>
 
 <a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Join Our Discord</a>
