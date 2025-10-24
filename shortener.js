@@ -1,3 +1,5 @@
+// shortener.js
+
 const params = new URLSearchParams(window.location.search);
 const service = params.get("service");
 
@@ -5,12 +7,6 @@ const input = document.getElementById("userLink");
 const typeSelect = document.getElementById("linkType");
 const resultDiv = document.getElementById("result");
 const btn = document.getElementById("generateBtn");
-
-// Asigură containerul vizibil
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".container");
-  container.style.display = "flex";
-});
 
 btn.addEventListener("click", async () => {
   const link = input.value.trim();
@@ -20,6 +16,7 @@ btn.addEventListener("click", async () => {
   let shortLink = "";
 
   try {
+    // Alege shortener-ul în funcție de service
     if(service === "isgd") {
       const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURIComponent(link)}`);
       shortLink = await res.text();
@@ -46,7 +43,7 @@ btn.addEventListener("click", async () => {
 
     if(!shortLink) throw new Error("Shortening failed");
 
-    // Markdown după tip
+    // Formatează link-ul după tipul selectat
     let markdown;
     if(type === "profile" || type === "private") {
       const safeLink = link.replace(/:/g, "_:_");
