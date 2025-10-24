@@ -3,45 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corrupt • Link Shortener Hub</title>
+<title>CorruptedV1 • Link Shortener Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Share Tech Mono', monospace; }
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Share Tech Mono', monospace;}
 body {
   min-height:100vh;
   background:url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
-  display:flex; flex-direction:column; align-items:center; color:white; text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;text-align:center;
 }
-h1 { font-size:4rem; margin-top:40px; animation:glitch 1s infinite; }
-@keyframes glitch { 0%{text-shadow:2px 0 red}20%{text-shadow:-2px -2px #fff}40%{text-shadow:2px 2px red}60%{text-shadow:-2px 0 #fff}80%{text-shadow:0 2px red}100%{text-shadow:0 0 #fff} }
-.description { margin-bottom:40px; font-size:1rem; }
-.shortener-buttons { display:flex; flex-direction:column; gap:15px; margin-bottom:40px; align-items:center; }
+h1 {font-size:4rem;margin-bottom:20px;animation:glitch 1s infinite;}
+@keyframes glitch {0%{text-shadow:2px 0 red}25%{text-shadow:-2px 2px #fff}50%{text-shadow:2px -2px red}75%{text-shadow:-2px -2px #fff}100%{text-shadow:0 0 #fff}}
+.description {font-size:1rem;margin-bottom:40px;}
+.shortener-buttons {
+  display:flex;flex-direction:column;gap:15px;align-items:center;margin-bottom:40px;
+}
 .shortener-btn {
-  padding:12px 25px; border:2px solid #fff; border-radius:10px;
-  background:rgba(255,255,255,0); color:#fff; font-weight:bold;
-  cursor:pointer; animation:glitchBtn 2s infinite; font-size:1.2rem; width:220px;
+  padding:12px 25px;border:2px solid #fff;border-radius:10px;
+  background:rgba(255,255,255,0);color:#fff;font-weight:bold;
+  cursor:pointer;animation:glitchBtn 2s infinite;font-size:1.2rem;width:220px;
 }
-@keyframes glitchBtn { 0%{text-shadow:2px 0 red}25%{text-shadow:-2px 2px #fff}50%{text-shadow:2px -2px red}75%{text-shadow:-2px -2px #fff}100%{text-shadow:0 0 #fff} }
-.discord-btn { margin-top:20px; padding:12px 25px; border:2px solid #fff; border-radius:10px; background:rgba(255,255,255,0.2); color:#fff; font-size:1.2rem; text-decoration:none; animation:glitchBtn 2s infinite; }
-.banner { margin-top:20px; }
+@keyframes glitchBtn {
+  0%{text-shadow:2px 0 red}25%{text-shadow:-2px 2px #fff}50%{text-shadow:2px -2px red}75%{text-shadow:-2px -2px #fff}100%{text-shadow:0 0 #fff}
+}
+.discord-btn {
+  margin-top:10px;padding:12px 25px;border:2px solid #fff;border-radius:10px;
+  background:rgba(255,255,255,0.2);color:#fff;font-size:1.2rem;text-decoration:none;
+  animation:glitchBtn 2s infinite;
+}
+.banner {margin-top:25px;width:250px;border-radius:10px;}
 </style>
 </head>
 <body>
 
-<h1>Corrupt</h1>
+<h1>CorruptedV1</h1>
 <div class="description">If your link says error, please use another shortener</div>
 
 <div class="shortener-buttons">
-  <button class="shortener-btn" onclick="openShortener('isgd')">Is.gd</button>
+  <button class="shortener-btn" onclick="openShortener('isgd')">is.gd</button>
   <button class="shortener-btn" onclick="openShortener('vgd')">v.gd</button>
   <button class="shortener-btn" onclick="openShortener('tinyurl')">TinyURL</button>
-  <button class="shortener-btn" onclick="openShortener('dagd')">Da.gd</button>
+  <button class="shortener-btn" onclick="openShortener('dagd')">da.gd</button>
   <button class="shortener-btn" onclick="openShortener('shrtco')">shrtco.de</button>
   <button class="shortener-btn" onclick="openShortener('clckru')">clck.ru</button>
 </div>
 
-<a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Our Discord Server</a>
-<img class="banner" src="https://i.imgur.com/8RCzmp3.gif" alt="Banner">
+<a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Join Our Discord</a>
+<img class="banner" src="https://i.imgur.com/8RCzmp3.gif" alt="banner">
 
 <script>
 function openShortener(service) {
