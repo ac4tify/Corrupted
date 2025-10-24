@@ -11,21 +11,19 @@ body {
   min-height: 100vh; background: url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
   display: flex; flex-direction: column; align-items: center; color: white; text-align: center;
 }
-h1 { font-size: 4rem; margin-top: 40px; animation: glitch 1s infinite; }
-@keyframes glitch { 0%{text-shadow:2px 0 red}20%{text-shadow:-2px -2px #fff}40%{text-shadow:2px 2px red}60%{text-shadow:-2px 0 #fff}80%{text-shadow:0 2px red}100%{text-shadow:0 0 #fff} }
+h1 { font-size: 4rem; margin-top: 40px; }
 .description { margin:15px 0 30px 0; font-size:1rem; color:#fff; }
 .container {
   background: rgba(0,0,0,0.3); border: 2px solid #fff; border-radius: 15px;
   padding: 30px; display:flex; flex-direction: column; align-items:center; gap:15px; width: 320px; margin:0 auto;
 }
-input, select, button { width:100%; padding:10px 15px; border:2px solid #fff; border-radius:10px; background: rgba(255,255,255,0.2); color:#fff; font-size:1rem; text-align:center; }
-button { font-size:1.2rem; cursor:pointer; animation: glitchBtn 2s infinite; }
-@keyframes glitchBtn { 0%{text-shadow:2px 0 red}25%{text-shadow:-2px 2px #fff}50%{text-shadow:2px -2px red}75%{text-shadow:-2px -2px #fff}100%{text-shadow:0 0 #fff} }
+input, select, button { width:100%; padding:12px 15px; border:2px solid #fff; border-radius:10px; background: rgba(255,255,255,0.2); color:#fff; font-size:1rem; text-align:center; }
+button { font-size:1.2rem; cursor:pointer; font-weight:bold; }
 #result { margin-top:15px; font-size:1rem; color:#fff; word-wrap:break-word; text-align:center; border:2px solid #fff; border-radius:10px; background:rgba(255,255,255,0.1); padding:10px; min-height: 40px; }
 .action-buttons { display:flex; gap:10px; margin-top:10px; }
-.action-buttons button { width: 48%; }
-.discord-btn { margin-top:20px; padding:12px 25px; border:2px solid #fff; border-radius:10px; background:rgba(255,255,255,0.2); color:#fff; font-size:1.2rem; text-decoration:none; animation:glitchBtn 2s infinite; }
-.discord-btn:hover{ transform: scale(1.05); }
+.action-buttons button { width: 48%; font-weight:bold; }
+.shortener-btn { margin: 5px 0; padding: 12px 20px; border-radius: 10px; border: 2px solid #fff; font-weight:bold; background: rgba(255,255,255,0.2); color:#fff; font-size:1.2rem; cursor:pointer; width:220px; }
+.discord-btn { margin-top:20px; padding:12px 25px; border:2px solid #fff; border-radius:10px; background:rgba(255,255,255,0.2); color:#fff; font-size:1.2rem; text-decoration:none; }
 .banner { margin-top:20px; }
 </style>
 </head>
@@ -44,9 +42,18 @@ button { font-size:1.2rem; cursor:pointer; animation: glitchBtn 2s infinite; }
   <button id="generateBtn">Generate</button>
   <div id="result">Your shortened link will appear here</div>
   <div class="action-buttons">
-    <button id="copyBtn">Copy</button>
+    <button id="copyBtn">Copy Markdown</button>
     <button id="viewBtn">View Website</button>
   </div>
+</div>
+
+<div class="shortener-buttons">
+  <button class="shortener-btn" onclick="setService('tinyurl')">TinyURL (Recommended)</button>
+  <button class="shortener-btn" onclick="setService('clckru')">Click.ru</button>
+  <button class="shortener-btn" onclick="setService('isgd')">Is.gd</button>
+  <button class="shortener-btn" onclick="setService('vgd')">v.gd</button>
+  <button class="shortener-btn" onclick="setService('dagd')">Da.gd</button>
+  <button class="shortener-btn" onclick="setService('shrtco')">shrtco.de</button>
 </div>
 
 <a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Join Our Discord</a>
