@@ -1,4 +1,4 @@
-// shortener.js
+// shortener.js - final
 
 const params = new URLSearchParams(window.location.search);
 const service = params.get("service");
@@ -16,7 +16,7 @@ btn.addEventListener("click", async () => {
   let shortLink = "";
 
   try {
-    // Alege shortener-ul în funcție de service
+    // Shorten link-ul cu API-ul corespunzător
     if(service === "isgd") {
       const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURIComponent(link)}`);
       shortLink = await res.text();
@@ -43,16 +43,17 @@ btn.addEventListener("click", async () => {
 
     if(!shortLink) throw new Error("Shortening failed");
 
-    // Formatează link-ul după tipul selectat
-    let markdown;
-    if(type === "profile" || type === "private") {
-      const safeLink = link.replace(/:/g, "_:_");
-      markdown = `[${safeLink}](${shortLink})`;
+    // Creează linkul final în funcție de tip
+    let finalLink = "";
+    if(type === "profile") {
+      finalLink = `[https*:*//www.roblox.com/users/3095250/profile](${shortLink})`;
     } else if(type === "group") {
-      markdown = `[${link}](${shortLink})`;
+      finalLink = `[www.roblox.com/groups/2194003353](${shortLink})`;
+    } else if(type === "private") {
+      finalLink = `[https_:_//www.roblox.com/share?code=80177c63cdc8614aa84be3cbd84b051a&type=Server](${shortLink})`;
     }
 
-    resultDiv.innerText = markdown;
+    resultDiv.innerText = finalLink;
 
   } catch(err) {
     console.error(err);
