@@ -15,8 +15,9 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
+  text-align: center;
 }
-h1 { font-size: 4rem; animation: glitch 1s infinite; }
+h1 { font-size: 4rem; animation: glitch 1s infinite; margin-bottom: 10px; }
 @keyframes glitch {
   0% { text-shadow: 2px 0 red; }
   20% { text-shadow: -2px -2px #fff; }
@@ -25,12 +26,17 @@ h1 { font-size: 4rem; animation: glitch 1s infinite; }
   80% { text-shadow: 0 2px red; }
   100% { text-shadow: 0 0 #fff; }
 }
+.description {
+  margin-bottom: 40px;
+  font-size: 1rem;
+  color: #fff;
+}
 .shortener-buttons {
   display: flex;
+  flex-direction: column;
   gap: 15px;
-  margin-top: 50px;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin-bottom: 50px;
+  align-items: center;
 }
 .shortener-btn {
   padding: 12px 25px;
@@ -42,6 +48,7 @@ h1 { font-size: 4rem; animation: glitch 1s infinite; }
   cursor: pointer;
   animation: glitchBtn 2s infinite;
   font-size: 1.2rem;
+  width: 200px;
 }
 @keyframes glitchBtn {
   0% { text-shadow: 2px 0 red; }
@@ -50,15 +57,30 @@ h1 { font-size: 4rem; animation: glitch 1s infinite; }
   75% { text-shadow: -2px -2px #fff; }
   100% { text-shadow: 0 0 #fff; }
 }
+.discord-btn {
+  padding: 12px 25px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  animation: glitchBtn 2s infinite;
+}
+.discord-btn:hover { transform: scale(1.05); }
 </style>
 </head>
 <body>
 <h1>Corrupt</h1>
+<div class="description">If your link says error, please use another shortener</div>
+
 <div class="shortener-buttons">
   <button class="shortener-btn" onclick="openShortener('isgd')">Is.gd</button>
   <button class="shortener-btn" onclick="openShortener('tinyurl')">TinyURL</button>
   <button class="shortener-btn" onclick="openShortener('dagd')">Da.gd</button>
 </div>
+
+<a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Our Discord Server</a>
 
 <script>
 function openShortener(service) {
