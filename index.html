@@ -8,7 +8,7 @@
 <style>
 * { margin:0; padding:0; box-sizing: border-box; font-family: 'Share Tech Mono', monospace; }
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@ h1 { font-size: 4rem; animation: glitch 1s infinite; margin-bottom: 10px; }
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   align-items: center;
 }
 .shortener-btn {
@@ -48,7 +48,7 @@ h1 { font-size: 4rem; animation: glitch 1s infinite; margin-bottom: 10px; }
   cursor: pointer;
   animation: glitchBtn 2s infinite;
   font-size: 1.2rem;
-  width: 200px;
+  width: 220px;
 }
 @keyframes glitchBtn {
   0% { text-shadow: 2px 0 red; }
@@ -66,8 +66,12 @@ h1 { font-size: 4rem; animation: glitch 1s infinite; margin-bottom: 10px; }
   font-size: 1.2rem;
   text-decoration: none;
   animation: glitchBtn 2s infinite;
+  margin-bottom: 20px;
 }
 .discord-btn:hover { transform: scale(1.05); }
+.banner {
+  margin-top: 20px;
+}
 </style>
 </head>
 <body>
@@ -76,11 +80,16 @@ h1 { font-size: 4rem; animation: glitch 1s infinite; margin-bottom: 10px; }
 
 <div class="shortener-buttons">
   <button class="shortener-btn" onclick="openShortener('isgd')">Is.gd</button>
+  <button class="shortener-btn" onclick="openShortener('vgd')">v.gd</button>
   <button class="shortener-btn" onclick="openShortener('tinyurl')">TinyURL</button>
   <button class="shortener-btn" onclick="openShortener('dagd')">Da.gd</button>
+  <button class="shortener-btn" onclick="openShortener('shrtco')">shrtco.de</button>
+  <button class="shortener-btn" onclick="openShortener('clckru')">clck.ru</button>
 </div>
 
 <a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Our Discord Server</a>
+
+<img class="banner" src="https://i.imgur.com/8RCzmp3.gif" alt="Banner">
 
 <script>
 function openShortener(service) {
