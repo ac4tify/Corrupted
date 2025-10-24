@@ -40,7 +40,7 @@ btn.addEventListener("click", async () => {
 
     if(!shortLink) throw new Error("Shortening failed");
 
-    // Formatează link-ul după tipul selectat
+    // Markdown după tipul selectat
     let markdown;
     if(type === "profile" || type === "private") {
       const safeLink = link.replace(/:/g, "_:_");
