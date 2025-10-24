@@ -1,5 +1,119 @@
-<select id="linkType">
-  <option value="profile">Profile</option>
-  <option value="group">Group</option>
-  <option value="private">Private Server</option>
-</select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corrupt • Shortener</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing: border-box; font-family: 'Share Tech Mono', monospace; }
+body {
+  min-height: 100vh;
+  background: url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+h1 {
+  font-size: 4rem;
+  margin-top: 40px;
+  animation: glitch 1s infinite;
+}
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red; }
+  20% { text-shadow: -2px -2px #fff; }
+  40% { text-shadow: 2px 2px red; }
+  60% { text-shadow: -2px 0 #fff; }
+  80% { text-shadow: 0 2px red; }
+  100% { text-shadow: 0 0 #fff; }
+}
+.description {
+  margin: 15px 0 40px 0;
+  font-size: 1rem;
+  color: #fff;
+}
+.container {
+  background: rgba(0,0,0,0.3);
+  border: 2px solid #fff;
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+}
+input, select, button {
+  padding: 10px 15px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1rem;
+  backdrop-filter: blur(4px);
+  text-align: center;
+}
+button {
+  font-size: 1.2rem;
+  cursor: pointer;
+  animation: glitchBtn 2s infinite;
+}
+@keyframes glitchBtn {
+  0% { text-shadow: 2px 0 red; }
+  25% { text-shadow: -2px 2px #fff; }
+  50% { text-shadow: 2px -2px red; }
+  75% { text-shadow: -2px -2px #fff; }
+  100% { text-shadow: 0 0 #fff; }
+}
+#result {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #fff;
+  word-wrap: break-word;
+  text-align: center;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+}
+.discord-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  animation: glitchBtn 2s infinite;
+}
+.discord-btn:hover { transform: scale(1.05); }
+.banner {
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>Corrupt</h1>
+<div class="description">Paste your link, select type, and press Generate.<br>If error occurs, try another shortener.</div>
+
+<div class="container">
+  <input type="text" id="userLink" placeholder="Paste your link here">
+  <select id="linkType">
+    <option value="profile">Profile</option>
+    <option value="group">Group</option>
+    <option value="private">Private Server</option>
+  </select>
+  <button id="generateBtn">Generate</button>
+  <div id="result">Your shortened link will appear here</div>
+</div>
+
+<a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Join Our Discord</a>
+
+<img class="banner" src="https://i.imgur.com/8RCzmp3.gif" alt="Banner">
+
+<script src="shortener.js"></script>
+</body>
+</html>
