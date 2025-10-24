@@ -8,7 +8,7 @@ const btn = document.getElementById("generateBtn");
 const copyBtn = document.getElementById("copyBtn");
 const viewBtn = document.getElementById("viewBtn");
 
-let currentFinalLink = "";
+let finalLink = "";
 
 btn.addEventListener("click", async () => {
   const link = input.value.trim();
@@ -18,28 +18,13 @@ btn.addEventListener("click", async () => {
   let shortLink = "";
 
   try {
-    if(service === "clickru") {
-      const res = await fetch(`https://clck.ru/--?url=${encodeURIComponent(link)}`);
-      shortLink = await res.text();
-    } else if(service === "isgd") {
+    if(service === "isgd") {
       const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURIComponent(link)}`);
-      shortLink = await res.text();
-    } else if(service === "tinyurl") {
-      const res = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(link)}`);
       shortLink = await res.text();
     } else if(service === "vgd") {
       const res = await fetch(`https://v.gd/create.php?format=simple&url=${encodeURIComponent(link)}`);
       shortLink = await res.text();
-    } else if(service === "dagd") {
-      const res = await fetch(`https://da.gd/s?url=${encodeURIComponent(link)}`);
+    } else if(service === "tinyurl") {
+      const res = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(link)}`);
       shortLink = await res.text();
-    } else if(service === "shrtco") {
-      const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(link)}`);
-      const data = await res.json();
-      shortLink = data.ok ? data.result.full_short_link : "";
-    } else {
-      alert("Unknown shortener service");
-      return;
-    }
-
-   
+    } else if
