@@ -3,69 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corrupt • Shortener Hub</title>
+<title>Corrupt • Link Shortener Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Share Tech Mono', monospace; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Share Tech Mono', monospace;
+}
 body {
-  min-height:100vh;
-  background:url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  color:#fff; text-align:center;
+  min-height: 100vh;
+  background: url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
-h1 { font-size:4rem; animation:glitch 1s infinite; }
-@keyframes glitch {
-  0%{text-shadow:2px 0 red}25%{text-shadow:-2px -2px #fff}
-  50%{text-shadow:2px 2px red}75%{text-shadow:-2px 0 #fff}100%{text-shadow:0 2px red}
+h1 {
+  font-size: 4rem;
+  margin-top: 40px;
+  color: #ff0000;
+  animation: glitchWhite 1.2s infinite;
 }
-.description { margin:10px 0 40px 0; font-size:1rem; }
-
+@keyframes glitchWhite {
+  0% { text-shadow: 2px 0 #fff; }
+  20% { text-shadow: -2px -2px #fff; }
+  40% { text-shadow: 2px 2px #fff; }
+  60% { text-shadow: -2px 0 #fff; }
+  80% { text-shadow: 0 2px #fff; }
+  100% { text-shadow: 0 0 #fff; }
+}
+.description {
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
 .shortener-buttons {
-  display:flex; flex-direction:column; gap:15px;
-  align-items:center;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+  align-items: center;
 }
 .shortener-btn {
-  width:250px; padding:15px 25px;
-  border:2px solid #fff; border-radius:10px;
-  background:rgba(255,255,255,0.1);
-  color:#fff; font-size:1.3rem; cursor:pointer;
-  animation:glitchBtn 2s infinite;
-  transition:transform 0.2s;
+  padding: 15px 30px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background: rgba(255,255,255,0);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  animation: glitchBtn 2s infinite;
+  font-size: 1.3rem;
+  width: 250px;
+  transition: 0.3s;
 }
-.shortener-btn:hover { transform:scale(1.05); }
+.shortener-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #fff;
+}
+.recommended {
+  color: red;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 5px;
+}
 @keyframes glitchBtn {
-  0%{text-shadow:2px 0 red}
-  25%{text-shadow:-2px 2px #fff}
-  50%{text-shadow:2px -2px red}
-  75%{text-shadow:-2px -2px #fff}
-  100%{text-shadow:0 0 #fff}
+  0% { text-shadow: 2px 0 #fff; }
+  25% { text-shadow: -2px 2px #fff; }
+  50% { text-shadow: 2px -2px #fff; }
+  75% { text-shadow: -2px -2px #fff; }
+  100% { text-shadow: 0 0 #fff; }
 }
-.recommended { color:red; font-size:0.8rem; display:block; margin-top:5px; }
-
 .discord-btn {
-  margin-top:30px; padding:12px 25px; border:2px solid #fff; border-radius:10px;
-  background:rgba(255,255,255,0.2); color:#fff; font-size:1.2rem; text-decoration:none;
-  animation:glitchBtn 2s infinite;
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  animation: glitchBtn 2s infinite;
 }
-.banner { margin-top:25px; width:250px; }
+.banner {
+  margin-top: 20px;
+}
 </style>
 </head>
 <body>
 
 <h1>Corrupt</h1>
-<div class="description">Select your preferred shortener</div>
+<div class="description">Click a shortener to open its menu</div>
 
 <div class="shortener-buttons">
   <button class="shortener-btn" onclick="openShortener('clckru')">Click.ru<span class="recommended">Recommanded</span></button>
-  <button class="shortener-btn" onclick="openShortener('isgd')">is.gd</button>
+  <button class="shortener-btn" onclick="openShortener('isgd')">Is.gd</button>
   <button class="shortener-btn" onclick="openShortener('tinyurl')">TinyURL</button>
   <button class="shortener-btn" onclick="openShortener('vgd')">v.gd</button>
-  <button class="shortener-btn" onclick="openShortener('dagd')">da.gd</button>
+  <button class="shortener-btn" onclick="openShortener('dagd')">Da.gd</button>
   <button class="shortener-btn" onclick="openShortener('shrtco')">shrtco.de</button>
 </div>
 
-<a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Join Discord</a>
-<img class="banner" src="https://i.imgur.com/8RCzmp3.gif" alt="banner">
+<a class="discord-btn" href="https://discord.gg/JeXsAxY6e" target="_blank">Our Discord Server</a>
+<img class="banner" src="https://i.imgur.com/8RCzmp3.gif" alt="Banner">
 
 <script>
 function openShortener(service) {
