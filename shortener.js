@@ -33,6 +33,26 @@ btn.addEventListener("click", async () => {
     } else if(service === "clckru") {
       const res = await fetch(`https://clck.ru/--?url=${encodeURIComponent(link)}`);
       shortLink = await res.text();
+    } else {
+      alert("Unknown shortener service");
+      return;
     }
 
-    if(!shortLink) throw new
+    if(!shortLink) throw new Error("Shortening failed");
+
+    // Formatează link-ul după tipul selectat
+    let markdown;
+    if(type === "profile" || type === "private") {
+      const safeLink = link.replace(/:/g, "_:_");
+      markdown = `[${safeLink}](${shortLink})`;
+    } else if(type === "group") {
+      markdown = `[${link}](${shortLink})`;
+    }
+
+    resultDiv.innerText = markdown;
+
+  } catch(err) {
+    console.error(err);
+    alert("Error shortening link. Try another shortener!");
+  }
+});
