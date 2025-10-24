@@ -10,18 +10,10 @@
 body {
   min-height: 100vh;
   background: url('https://i.pinimg.com/originals/25/d6/ae/25d6aeafcf3ab62953af0aa675e1f9ec.gif') no-repeat center center/cover fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  text-align: center;
+  display: flex; flex-direction: column; align-items: center; color: white; text-align: center;
 }
 h1 { font-size: 4rem; margin-top: 40px; animation: glitch 1s infinite; }
-@keyframes glitch {
-  0% { text-shadow: 2px 0 red; } 20% { text-shadow: -2px -2px #fff; }
-  40% { text-shadow: 2px 2px red; } 60% { text-shadow: -2px 0 #fff; }
-  80% { text-shadow: 0 2px red; } 100% { text-shadow: 0 0 #fff; }
-}
+@keyframes glitch { 0%{text-shadow:2px 0 red}20%{text-shadow:-2px -2px #fff}40%{text-shadow:2px 2px red}60%{text-shadow:-2px 0 #fff}80%{text-shadow:0 2px red}100%{text-shadow:0 0 #fff} }
 .description { margin-bottom: 40px; font-size: 1rem; }
 .shortener-buttons { display: flex; flex-direction: column; gap: 15px; margin-bottom: 40px; align-items: center; }
 .shortener-btn {
@@ -30,8 +22,7 @@ h1 { font-size: 4rem; margin-top: 40px; animation: glitch 1s infinite; }
   cursor: pointer; animation: glitchBtn 2s infinite; font-size: 1.2rem; width: 220px;
 }
 @keyframes glitchBtn {
-  0% { text-shadow: 2px 0 red; } 25% { text-shadow: -2px 2px #fff; }
-  50% { text-shadow: 2px -2px red; } 75% { text-shadow: -2px -2px #fff; } 100% { text-shadow: 0 0 #fff; }
+  0%{text-shadow:2px 0 red}25%{text-shadow:-2px 2px #fff}50%{text-shadow:2px -2px red}75%{text-shadow:-2px -2px #fff}100%{text-shadow:0 0 #fff}
 }
 .discord-btn { margin-top: 20px; padding: 12px 25px; border: 2px solid #fff; border-radius: 10px;
 background: rgba(255,255,255,0.2); color: #fff; font-size: 1.2rem; text-decoration: none; animation: glitchBtn 2s infinite; }
