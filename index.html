@@ -54,27 +54,20 @@ h1 {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  animation: glitchBtn 2s infinite;
   font-size: 1.3rem;
   width: 250px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 .shortener-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px #fff;
+  background: rgba(255,255,255,0.1);
 }
 .recommended {
   color: red;
   font-size: 0.8rem;
   display: block;
   margin-top: 5px;
-}
-@keyframes glitchBtn {
-  0% { text-shadow: 2px 0 #fff; }
-  25% { text-shadow: -2px 2px #fff; }
-  50% { text-shadow: 2px -2px #fff; }
-  75% { text-shadow: -2px -2px #fff; }
-  100% { text-shadow: 0 0 #fff; }
 }
 .discord-btn {
   margin-top: 20px;
@@ -85,7 +78,11 @@ h1 {
   color: #fff;
   font-size: 1.2rem;
   text-decoration: none;
-  animation: glitchBtn 2s infinite;
+  transition: 0.3s;
+}
+.discord-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #fff;
 }
 .banner {
   margin-top: 20px;
