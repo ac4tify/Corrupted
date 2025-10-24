@@ -18,12 +18,25 @@ btn.addEventListener("click", async () => {
       const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURIComponent(link)}`);
       if(!res.ok) throw new Error("Failed to shorten");
       shortLink = await res.text();
+    } else if(service === "vgd") {
+      const res = await fetch(`https://v.gd/create.php?format=simple&url=${encodeURIComponent(link)}`);
+      if(!res.ok) throw new Error("Failed to shorten");
+      shortLink = await res.text();
     } else if(service === "tinyurl") {
       const res = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(link)}`);
       if(!res.ok) throw new Error("Failed to shorten");
       shortLink = await res.text();
     } else if(service === "dagd") {
       const res = await fetch(`https://da.gd/s?url=${encodeURIComponent(link)}`);
+      if(!res.ok) throw new Error("Failed to shorten");
+      shortLink = await res.text();
+    } else if(service === "shrtco") {
+      const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(link)}`);
+      const data = await res.json();
+      if(data.ok) shortLink = data.result.full_short_link;
+      else throw new Error("Failed to shorten");
+    } else if(service === "clckru") {
+      const res = await fetch(`https://clck.ru/--?url=${encodeURIComponent(link)}`);
       if(!res.ok) throw new Error("Failed to shorten");
       shortLink = await res.text();
     }
@@ -40,6 +53,6 @@ btn.addEventListener("click", async () => {
 
   } catch(err) {
     console.error(err);
-    alert("Error shortening link. Try again!");
+    alert("Error shortening link. Try another shortener!");
   }
 });
