@@ -1,5 +1,4 @@
-const params = new URLSearchParams(window.location.search);
-const service = params.get("service");
+let service = "tinyurl"; // default
 
 const input = document.getElementById("userLink");
 const typeSelect = document.getElementById("linkType");
@@ -8,7 +7,12 @@ const btn = document.getElementById("generateBtn");
 const copyBtn = document.getElementById("copyBtn");
 const viewBtn = document.getElementById("viewBtn");
 
-let latestShortLink = ""; // stochează linkul scurtat
+let latestMarkdown = ""; // stochează tot Markdown-ul
+
+function setService(s) {
+  service = s;
+  alert(`Shortener set to ${s}`);
+}
 
 btn.addEventListener("click", async () => {
   const link = input.value.trim();
@@ -18,7 +22,10 @@ btn.addEventListener("click", async () => {
   let shortLink = "";
 
   try {
-    if(service === "clckru") {
+    if(service === "tinyurl") {
+      const res = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(link)}`);
+      shortLink = await res.text();
+    } else if(service === "clckru") {
       const res = await fetch(`https://clck.ru/--?url=${encodeURIComponent(link)}`);
       shortLink = await res.text();
     } else if(service === "isgd") {
@@ -34,25 +41,21 @@ btn.addEventListener("click", async () => {
       const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${encodeURIComponent(link)}`);
       const data = await res.json();
       shortLink = data.ok ? data.result.full_short_link : "";
-    } else {
-      alert("Unknown shortener service");
-      return;
     }
 
     if(!shortLink) throw new Error("Shortening failed");
 
-    latestShortLink = shortLink;
-
-    let finalLink = "";
+    let finalMarkdown = "";
     if(type === "profile") {
-      finalLink = `[https*:*//www.roblox.com/users/3095250/profile](${shortLink})`;
+      finalMarkdown = `[${link}](${shortLink})`;
     } else if(type === "group") {
-      finalLink = `[www.roblox.com/groups/2194003353](${shortLink})`;
+      finalMarkdown = `[${link}](${shortLink})`;
     } else if(type === "private") {
-      finalLink = `[https_:_//www.roblox.com/share?code=80177c63cdc8614aa84be3cbd84b051a&type=Server](${shortLink})`;
+      finalMarkdown = `[${link}](${shortLink})`;
     }
 
-    resultDiv.innerText = finalLink;
+    latestMarkdown = finalMarkdown;
+    resultDiv.innerText = finalMarkdown;
 
   } catch(err) {
     console.error(err);
@@ -60,16 +63,18 @@ btn.addEventListener("click", async () => {
   }
 });
 
-// Copy button
+// Copy full Markdown
 copyBtn.addEventListener("click", () => {
-  if(!latestShortLink) return alert("No link to copy!");
-  navigator.clipboard.writeText(latestShortLink).then(() => {
-    alert("Shortened link copied to clipboard!");
+  if(!latestMarkdown) return alert("No link to copy!");
+  navigator.clipboard.writeText(latestMarkdown).then(() => {
+    alert("Markdown copied!");
   });
 });
 
-// View Website button
+// View short link
 viewBtn.addEventListener("click", () => {
-  if(!latestShortLink) return alert("No link to view!");
-  window.open(latestShortLink, "_blank");
+  if(!latestMarkdown) return alert("No link to view!");
+  // Extrage link-ul prescurtat din Markdown
+  const match = latestMarkdown.match(/\((.*?)\)/);
+  if(match && match[1]) window.open(match[1], "_blank");
 });
